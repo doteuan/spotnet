@@ -1,7 +1,4 @@
-﻿using Newtonsoft.Json;
-using System.Text.Json.Serialization;
-
-namespace Spotnet.Core.Shared
+﻿namespace Spotnet.Core.Shared
 {
     /// <summary>
     /// Class that represents copyright statements provided by the Spotify API.
@@ -11,8 +8,6 @@ namespace Spotnet.Core.Shared
         /// <summary>
         /// Gets or sets the copyright text for this content.
         /// </summary>
-        [JsonPropertyName("text")]
-        [JsonProperty("text")]
         public string Text { get; set; } = null!;
 
         /// <summary>
@@ -21,8 +16,6 @@ namespace Spotnet.Core.Shared
         /// <remarks>
         /// If value is <c>'C'</c> it refers to the copyright, if <c>'P'</c> it refers to the sound recording (performance) copyright.
         /// </remarks>
-        [JsonPropertyName("type")]
-        [JsonProperty("type")]
         public string Type { get; set; } = null!;
     }
 }

@@ -1,13 +1,9 @@
 ﻿using Refit;
 using Spotnet.Core.Shared;
 using Spotnet.Core.Tracks;
-
-#if NETSTANDARD2_1
-
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-
-#endif
 
 namespace Spotnet.Core.Albums
 {
@@ -41,15 +37,21 @@ namespace Spotnet.Core.Albums
         /// <summary>
         /// Get Spotify catalog information for various albums.
         /// </summary>
+        /// <remarks>
+        /// Responses:<br/>
+        /// <c>200 OK</c> - <see cref="IReadOnlyList{T}"/> of <see cref="Album"/><br/>
+        /// <c>400 Bad Request</c> - <see cref="ApiError"/><br/>
+        /// <c>401 Unauthorized</c> - <see cref="ApiError"/><br/>
+        /// <c>403 Forbidden</c> - <see cref="ApiError"/><br/>
+        /// <c>429 Too Many Requests</c> - <see cref="ApiError"/><br/>
+        /// For full documentation, see <see href="https://developer.spotify.com/documentation/web-api/reference/get-multiple-albums"/>.
+        /// </remarks>
         /// <param name="ids">The <see href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify Ids</see> of the albums. Maximum is 20.</param>
         /// <param name="market">An <see href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-1 alpha-2 country code</see>.</param>
         /// <param name="cancellationToken">A stopping token used to monitor for cancellation requests.</param>
-        /// <returns>
-        /// <para>An <see cref="ApiResponse{T}"/> of <see cref="Array"/> of <see cref="Album"/> if successful.</para>
-        /// <para>Consult <see cref="ApiResponse{T}.Error"/> for error information.</para>
-        /// </returns>
+        /// <returns></returns>
         [Get("/albums")]
-        ValueTask<ApiResponse<Album[]>> GetAlbumsAsync([Query(CollectionFormat.Csv)] string[] ids,
+        ValueTask<ApiResponse<IReadOnlyList<Album>>> GetAlbumsAsync([Query(CollectionFormat.Csv)] string[] ids,
             string? market = null,
             CancellationToken cancellationToken = default);
 

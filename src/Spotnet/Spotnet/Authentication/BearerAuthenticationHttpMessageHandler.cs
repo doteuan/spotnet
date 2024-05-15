@@ -1,12 +1,9 @@
 ﻿using Microsoft.Extensions.Caching.Distributed;
-
-#if NETSTANDARD2_1
-
 using System;
 using System.Net.Http;
 using System.Net.Http.Headers;
-
-#endif
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Spotnet.Extensions.DependencyInjection.Authentication
 {
@@ -29,24 +26,20 @@ namespace Spotnet.Extensions.DependencyInjection.Authentication
             _distributedCache = distributedCache ?? throw new ArgumentNullException(nameof(distributedCache));
         }
 
-        //protected override HttpResponseMessage Send(HttpRequestMessage request, CancellationToken cancellationToken)
-        //{
-        //    return base.Send(request, cancellationToken);
-        //}
+        protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+        {
+            //var authToken = await _distributedCache.GetStringAsync("", cancellationToken)
+            //    .ConfigureAwait(false);
 
-        //protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
-        //{
-        //    var authToken = await _distributedCache.GetStringAsync("", cancellationToken)
-        //        .ConfigureAwait(false);
+            //if (!string.IsNullOrEmpty(authToken))
+            //{
+            //    request.Headers.Authorization = new AuthenticationHeaderValue(BearerAuthorizationHeaderName, authToken);
+            //    return await base.SendAsync(request, cancellationToken)
+            //        .ConfigureAwait(false);
+            //}
 
-        //    if (!string.IsNullOrEmpty(authToken))
-        //    {
-        //        request.Headers.Authorization = new AuthenticationHeaderValue(BearerAuthorizationHeaderName, authToken);
-        //        return await base.SendAsync(request, cancellationToken)
-        //            .ConfigureAwait(false);
-        //    }
-
-
-        //}
+            return await base.SendAsync(request, cancellationToken)
+                    .ConfigureAwait(false);
+        }
     }
 }
