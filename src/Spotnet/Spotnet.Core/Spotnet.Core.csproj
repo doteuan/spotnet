@@ -1,0 +1,35 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+	<Product>Spotnet.Core</Product>
+	<Description>Spotnet is a lightweight .NET implementation to connect your application to the Spotify API.</Description>
+    <TargetFramework>netstandard2.1</TargetFramework>
+	<Nullable>enable</Nullable>
+	<Title>Spotnet.Core</Title>
+	<Authors>Euan Mair</Authors>
+	<PackageProjectUrl>https://github.com/doteuan/spotnet</PackageProjectUrl>
+	<PackageIcon>spotnet-logo-small.png</PackageIcon>
+	<RepositoryType>git</RepositoryType>
+	<PackageTags>spotify;netstandard2.1;api</PackageTags>
+  </PropertyGroup>
+	
+  <ItemGroup>
+    <PackageReference Include="Refit" Version="7.0.0" />
+    <PackageReference Include="System.Text.Json" Version="8.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Audiobooks\" />
+    <Folder Include="Categories\" />
+    <Folder Include="Chapters\" />
+    <Folder Include="Episodes\" />
+    <Folder Include="Genres\" />
+    <Folder Include="Markets\" />
+    <Folder Include="Users\" />
+    <Folder Include="Shows\" />
+    <Folder Include="Search\" />
+    <Folder Include="Playlists\" />
+    <Folder Include="Player\" />
+  </ItemGroup>
+
+</Project>

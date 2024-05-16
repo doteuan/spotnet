@@ -1,0 +1,46 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+	<Product>Spotnet.Core</Product>
+	<Description>Spotnet is a lightweight .NET implementation to connect your application to the Spotify API.</Description>
+    <TargetFrameworks>netstandard2.1;net6.0;net8.0</TargetFrameworks>
+	<Nullable>enable</Nullable>
+	<Title>Spotnet.Core</Title>
+	<Authors>Euan Mair</Authors>
+	<PackageProjectUrl>https://github.com/doteuan/spotnet</PackageProjectUrl>
+	<PackageIcon>spotnet-logo-small.png</PackageIcon>
+	<RepositoryUrl>https://github.com/doteuan/spotnet</RepositoryUrl>
+  </PropertyGroup>
+
+	<PropertyGroup Condition="'$(TargetFramework)' == 'net6.0' Or '$(TargetFramework)' == 'net8.0'">
+		<ImplicitUsings>enable</ImplicitUsings>
+	</PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="Refit" Version="7.0.0" />
+    <PackageReference Include="System.Text.Json" Version="8.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Audiobooks\" />
+    <Folder Include="Categories\" />
+    <Folder Include="Chapters\" />
+    <Folder Include="Episodes\" />
+    <Folder Include="Genres\" />
+    <Folder Include="Markets\" />
+    <Folder Include="Users\" />
+    <Folder Include="Shows\" />
+    <Folder Include="Search\" />
+    <Folder Include="Playlists\" />
+    <Folder Include="Player\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\..\docs\spotnet-logo-small.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
+
+</Project>
