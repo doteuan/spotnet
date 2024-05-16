@@ -47,7 +47,8 @@ namespace Spotnet.Core.Artists
         /// <param name="cancellationToken">A stopping token used to monitor for cancellation requests.</param>
         /// <returns></returns>
         [Get("/artists")]
-        ValueTask<ApiResponse<IReadOnlyList<Artist>>> GetArtistsAsync([Query(CollectionFormat.Csv)] string[] ids, CancellationToken cancellationToken = default);
+        ValueTask<ApiResponse<IReadOnlyList<Artist>>> GetArtistsAsync([Query(CollectionFormat.Csv)] string[] ids,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Get Spotify catalog information about an artist's albums.
@@ -70,10 +71,7 @@ namespace Spotnet.Core.Artists
         /// <returns></returns>
         [Get("/artists/{id}/albums")]
         ValueTask<ApiResponse<ApiCollection<SimplifiedAlbum>>> GetArtistAlbumsAsync(string id,
-            [Query(CollectionFormat.Csv)] string? includeGroups,
-            string? market = null,
-            int limit = 20,
-            int offset = 0,
+            [Query(CollectionFormat.Csv)] string? includeGroups, string? market = null, int limit = 20, int offset = 0,
             CancellationToken cancellationToken = default);
     }
 }

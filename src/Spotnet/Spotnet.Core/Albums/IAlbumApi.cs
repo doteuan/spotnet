@@ -30,9 +30,8 @@ namespace Spotnet.Core.Albums
         /// <param name="cancellationToken">A stopping token used to monitor for cancellation requests.</param>
         /// <returns></returns>
         [Get("/albums/{id}")]
-        ValueTask<ApiResponse<Album>> GetAlbumAsync(string id,
-            string? market = null,
-            CancellationToken cancellationToken = default);
+        Task<ApiResponse<Album>> GetAlbumAsync(string id,
+            string? market = null, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Get Spotify catalog information for various albums.
@@ -51,9 +50,8 @@ namespace Spotnet.Core.Albums
         /// <param name="cancellationToken">A stopping token used to monitor for cancellation requests.</param>
         /// <returns></returns>
         [Get("/albums")]
-        ValueTask<ApiResponse<IReadOnlyList<Album>>> GetAlbumsAsync([Query(CollectionFormat.Csv)] string[] ids,
-            string? market = null,
-            CancellationToken cancellationToken = default);
+        Task<ApiResponse<IReadOnlyList<Album>>> GetAlbumsAsync([Query(CollectionFormat.Csv)] string[] ids,
+            string? market = null, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Get Spotify catalog information for an album's tracks. Optional parameters can be used to limit the number of tracks returned.
@@ -83,12 +81,8 @@ namespace Spotnet.Core.Albums
         /// <param name="cancellationToken">A stopping token used to monitor for cancellation requests.</param>
         /// <returns></returns>
         [Get("/albums/{id}/tracks")]
-        ValueTask<ApiResponse<ApiCollection<SimplifiedTrack>>> GetAlbumTracksAsync(
-            string id,
-            string? market = null,
-            int limit = 20,
-            int offset = 0,
-            CancellationToken cancellationToken = default);
+        Task<ApiResponse<ApiCollection<SimplifiedTrack>>> GetAlbumTracksAsync(string id, string? market = null,
+            int limit = 20, int offset = 0, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Get a list of new album releases featured in Spotify (shown, for example, on a Spotify player's "Browse" tab).
@@ -115,6 +109,7 @@ namespace Spotnet.Core.Albums
         /// <param name="offset">The index of the first item to return. Defaults to 0 (the first item). Use with <paramref name="limit"/> to get the next set of items.</param>
         /// <returns></returns>
         [Get("/browse/new-releases")]
-        ValueTask<ApiResponse<ApiCollection<SimplifiedAlbum>>> GetNewReleasesAsync(int limit = 20, int offset = 0, CancellationToken cancellationToken = default);
+        Task<ApiResponse<ApiCollection<SimplifiedAlbum>>> GetNewReleasesAsync(int limit = 20, int offset = 0,
+            CancellationToken cancellationToken = default);
     }
 }
